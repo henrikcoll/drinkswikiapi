@@ -25,6 +25,9 @@ const DrinkSchema = new mongoose.Schema({
 			type: 'string'
 		}
 	}],
+	steps: [{
+		type: String
+	}],
 	imageUrl: {
 		type: String
 	}
