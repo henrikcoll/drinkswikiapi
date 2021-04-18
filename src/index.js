@@ -288,4 +288,4 @@ fastify.get('/ingredient/:id', {
 });
 
 
-fastify.listen(3000);
+fastify.listen(3000, '0.0.0.0');
