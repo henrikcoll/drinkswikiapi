@@ -156,6 +156,9 @@ fastify.get('/drinks', {
 				type: 'number',
 				description: 'number of drinks to skip',
 				default: 0
+			},
+			tag: {
+				type: 'string'
 			}
 		},
 		response: {
@@ -175,7 +178,12 @@ fastify.get('/drinks', {
 		security: []
 	}
 }, async (req) => {
-	const drinks = await Drink.find({}).skip(req.query.skip).limit(req.query.limit);
+	let query = {};
+
+	if (req.query.tag)
+		query.tags = req.query.tag;
+
+	const drinks = await Drink.find(query).skip(req.query.skip).limit(req.query.limit);
 
 	return {
 		drinks
