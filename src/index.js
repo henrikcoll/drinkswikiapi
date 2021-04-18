@@ -5,7 +5,7 @@ const package = require('../package.json');
 const Ingredient = require('./models/Ingredient');
 const Drink = require('./models/Drink');
 
-mongoose.connect('mongodb://localhost/drinks', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost/drinks', { useNewUrlParser: true, useUnifiedTopology: true });
 
 fastify.register(require('fastify-cors'), {});
 
